@@ -1,1 +1,1 @@
-web: gunicorn todo-backend:app --log-file -
+web: gunicorn todo:app --log-file -
