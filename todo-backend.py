@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources=r'/*', allow_headers="Content-Type")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST', 'DELETE'])
 def todo():
     if request.method == 'GET':
         return "GET of root URL"
