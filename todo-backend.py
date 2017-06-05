@@ -11,6 +11,8 @@ def todo():
         return "GET of root URL"
     if request.method == 'POST':
         return request.data
+    if request.method == 'DELETE':
+        return "DELETE on root URL"
     else:
         return "Method on root URL " + str(request.method)
 
