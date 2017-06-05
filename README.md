@@ -15,6 +15,7 @@ To run the code on a cloud server, e.g. Heroku:
 git push heroku master
 heroku open
 ```
+and visit http://todobackend.com/specs/index.html?<HEROKU_APP_NAME>, e.g. [http://todobackend.com/specs/index.html?https://bramfoo-todo-backend.herokuapp.com/]
 
 ## More info
 This repository contains (a lot of) inspiration from [Faerbit's code](https://github.com/Faerbit/todo-backend-flask)
