@@ -15,3 +15,6 @@ To run the code on a cloud server, e.g. Heroku:
 git push heroku master
 heroku open
 ```
+
+## More info
+This repository contains (a lot of) inspiration from [Faerbit's code](https://github.com/Faerbit/todo-backend-flask)
