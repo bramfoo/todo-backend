@@ -3,7 +3,9 @@ This is a Python implementation of the specifications of [todobackend.com](http:
 
 ## Running
 To run the code locally:
-`gunicorn todo:app`
+```bash
+gunicorn todo:app
+```
 and visit [localhost:8000](http://localhost:8000/)
 
 To run the code on a cloud server, e.g. Heroku:
