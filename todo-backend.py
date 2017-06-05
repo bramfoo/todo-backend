@@ -9,8 +9,10 @@ CORS(app, resources=r'/*', allow_headers="Content-Type")
 def todo():
     if request.method == 'GET':
         return "GET of root URL"
+    if request.method == 'POST':
+        return request.data
     else:
-        return "POST to root URL"
+        return "Method on root URL " + str(request.method)
 
 if __name__ == "__main__":
     app.run()
