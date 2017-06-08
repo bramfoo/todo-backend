@@ -13,11 +13,10 @@ logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/', methods=['GET', 'POST', 'DELETE'])
 def index():
+    logging.debug(str(request.method) + " on " + str(request.path))
     if request.method == 'GET':
-        response = []
-        for key in todos.keys():
-            response.append(toDict(key))
-        logging.debug("GET: " + str(response))
+        response = returnAll()
+        logging.debug(response)
         return jsonify(response)
 
     if request.method == 'POST':
@@ -32,10 +31,8 @@ def index():
         return jsonify(toDict(todo_uuid))
 
     if request.method == 'DELETE':
-        logging.debug("DELETE: " + str(request))
         todos.clear()
-        response = []
-        return jsonify(response)
+        return jsonify(returnAll())
     else:
         logging.debug(request.method + str(request))
         # Returning empty response
@@ -43,9 +40,10 @@ def index():
 
 @app.route('/<uuid:todo_uuid>', methods=["GET"])
 def todo(todo_uuid):
-    logging.debug("/<uuid>: " + str(request.path))
+    logging.debug(str(request.method) + " on " + str(request.path))
     if request.method == 'GET':
         if todo_uuid in todos:
+            logging.debug("Found: " + str(todos[todo_uuid]))
             return jsonify(toDict(todo_uuid))
         else:
             logging.debug("Item not found")
@@ -58,3 +56,9 @@ def toDict(key):
     # See http://flask.pocoo.org/docs/0.12/quickstart/#url-building
     item = todos[key]
     return dict(title=item.title, completed=item.completed, url=url_for("todo", todo_uuid=key, _external=True))
+
+def returnAll():
+    response = []
+    for key in todos.keys():
+        response.append(toDict(key))
+    return response
