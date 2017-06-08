@@ -33,7 +33,7 @@ def index():
 
     if request.method == 'DELETE':
         logging.debug("DELETE: " + str(request))
-        todos.clear
+        todos.clear()
         response = []
         return jsonify(response)
     else:
