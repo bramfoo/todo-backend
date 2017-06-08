@@ -33,10 +33,12 @@ def index():
 
     if request.method == 'DELETE':
         logging.debug("DELETE: " + str(request))
-        # Returning empty response
-        return ('', 204)
+        todos.clear
+        response = []
+        return jsonify(response)
     else:
         logging.debug(request.method + str(request))
+        # Returning empty response
         return ('', 204)
 
 @app.route('/<uuid:todo_uuid>', methods=["GET"])
