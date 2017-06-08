@@ -33,7 +33,8 @@ def todo():
 
     if request.method == 'DELETE':
         logging.debug("DELETE: " + str(request))
-        return
+        # Returning empty response
+        return ('', 204)
     else:
         logging.debug(request.method + str(request))
         return
