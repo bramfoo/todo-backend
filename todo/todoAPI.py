@@ -48,6 +48,9 @@ def todo(todo_uuid):
             if 'title' in req_data:
                 todos[todo_uuid].title = req_data['title']
                 logging.debug("Updated title: " + str(todos[todo_uuid].title))
+            if 'completed' in req_data:
+                todos[todo_uuid].completed = req_data['completed']
+                logging.debug("Updated completed: " + str(todos[todo_uuid].completed))
             return jsonify(toDict(todo_uuid))
         if request.method == 'GET':
             return jsonify(toDict(todo_uuid))
