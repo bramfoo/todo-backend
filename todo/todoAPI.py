@@ -45,7 +45,7 @@ def todo(todo_uuid):
         logging.debug("Found: " + str(todos[todo_uuid]))
         if request.method == 'PATCH':
             req_data = request.get_json()
-            logging.debug("New data: " + str(request_data))
+            logging.debug("New data: " + str(req_data))
             todos[todo_uuid].__dict__.update(req_data.items())
             logging.debug("Updated: " + str(todos[todo_uuid]))
             return jsonify(toDict(todo_uuid))
