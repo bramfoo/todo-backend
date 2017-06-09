@@ -38,7 +38,7 @@ def index():
         # Returning empty response
         return ('', 204)
 
-@app.route('/<uuid:todo_uuid>', methods=["GET", "PATCH"])
+@app.route('/<uuid:todo_uuid>', methods=["GET", "PATCH", "DELETE"])
 def todo(todo_uuid):
     logging.debug(str(request.method) + " on " + str(request.path))
     if todo_uuid in todos:
@@ -52,6 +52,10 @@ def todo(todo_uuid):
                 todos[todo_uuid].completed = req_data['completed']
                 logging.debug("Updated completed: " + str(todos[todo_uuid].completed))
             return jsonify(toDict(todo_uuid))
+        if request.method == 'DELETE':
+            logging.debug("Removing: " + str(todos[todo_uuid]))
+            del todos[todo_uuid]
+            return ('', 204)
         if request.method == 'GET':
             return jsonify(toDict(todo_uuid))
         else:
