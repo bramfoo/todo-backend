@@ -45,7 +45,8 @@ def todo(todo_uuid):
         logging.debug("Found: " + str(todos[todo_uuid]))
         if request.method == 'PATCH':
             req_data = request.get_json()
-            updatedItem = dict(todos[todo_uuid].__dict__.items() + req_data.items())
+            # See https://code-maven.com/how-to-insert-a-dictionary-in-another-dictionary-in-python
+            updatedItem = dict(todos[todo_uuid].__dict__.items() | req_data.items())
             todos[todo_uuid] = Item(updatedItem["title"], updatedItem["completed"])
             logging.debug("Updated: " + str(todos[todo_uuid]))
             return jsonify(toDict(todo_uuid))
