@@ -45,12 +45,9 @@ def todo(todo_uuid):
         logging.debug("Found: " + str(todos[todo_uuid]))
         if request.method == 'PATCH':
             req_data = request.get_json()
-            if 'title' in req_data:
-                todos[todo_uuid].title = req_data['title']
-                logging.debug("Updated title: " + str(todos[todo_uuid].title))
-            if 'completed' in req_data:
-                todos[todo_uuid].completed = req_data['completed']
-                logging.debug("Updated completed: " + str(todos[todo_uuid].completed))
+            updatedItem = dict(todos[todo_uuid].__dict__.items() + req_data.items())
+            todos[todo_uuid] = Item(updatedItem["title"], updatedItem["completed"])
+            logging.debug("Updated: " + str(todos[todo_uuid]))
             return jsonify(toDict(todo_uuid))
         if request.method == 'DELETE':
             logging.debug("Removing: " + str(todos[todo_uuid]))
