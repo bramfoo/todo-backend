@@ -38,18 +38,24 @@ def index():
         # Returning empty response
         return ('', 204)
 
-@app.route('/<uuid:todo_uuid>', methods=["GET"])
+@app.route('/<uuid:todo_uuid>', methods=["GET", "PATCH"])
 def todo(todo_uuid):
     logging.debug(str(request.method) + " on " + str(request.path))
-    if request.method == 'GET':
-        if todo_uuid in todos:
-            logging.debug("Found: " + str(todos[todo_uuid]))
+    if todo_uuid in todos:
+        logging.debug("Found: " + str(todos[todo_uuid]))
+        if request.method == 'PATCH':
+            req_data = request.get_json()
+            if 'title' in req_data:
+                todos[todo_uuid].title = req_data['title']
+                logging.debug("Updated title: " + str(todos[todo_uuid].title))
+            return jsonify(toDict(todo_uuid))
+        if request.method == 'GET':
             return jsonify(toDict(todo_uuid))
         else:
-            logging.debug("Item not found")
-            return jsonify(dict())
+            return ('', 204)
     else:
-        return ('', 204)
+        logging.debug("Item not found")
+        return jsonify(dict())
 
 def toDict(key):
     # Build URL based on the 'item' function
