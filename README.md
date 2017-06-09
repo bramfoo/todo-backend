@@ -6,7 +6,7 @@ To run the code locally, clone this repository, install [virtualenv](https://vir
 ```bash
 git clone https://github.com/bramfoo/todo-backend.git
 cd todo-backend
-pip install virtualenv
+python3 -m venv venv
 pip install -r requirements.txt
 gunicorn todo:app
 ```
