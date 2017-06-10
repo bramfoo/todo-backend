@@ -65,7 +65,7 @@ def toDict(key):
     # Build URL based on the 'item' function
     # See http://flask.pocoo.org/docs/0.12/quickstart/#url-building
     item = todos[key]
-    return dict(title=item.title, completed=item.completed, url=url_for("todo", todo_uuid=key, _external=True))
+    return dict(title=item.title, order=item.order, completed=item.completed, url=url_for("todo", todo_uuid=key, _external=True))
 
 def returnAll():
     response = []

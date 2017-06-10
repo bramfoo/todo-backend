@@ -1,8 +1,9 @@
 class Item():
 
-    def __init__(self, title=None, completed=False):
+    def __init__(self, title=None, order=None, completed=False):
         self.title = title
+        self.order = order
         self.completed = completed
 
     def __repr__(self):
-        return "Item(title={}, completed={})".format(self.title, self.completed)
+        return "Item(title={}, order={}, completed={})".format(self.title, self.order, self.completed)
