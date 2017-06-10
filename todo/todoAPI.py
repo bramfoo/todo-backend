@@ -24,7 +24,10 @@ def index():
         logging.debug("POST data: " + str(req_data))
 
         todo_uuid = uuid.uuid4()
-        todo = Item(req_data["title"])
+        if "order" in req_data:
+            todo = Item(req_data["title"], req_data["order"])
+        else:
+            todo = Item(req_data["title"])
         logging.debug("Created todo: " + str(todo))
 
         todos[todo_uuid] = todo
