@@ -1,3 +1,5 @@
+[![Requirements Status](https://requires.io/github/bramfoo/todo-backend/requirements.svg?branch=master)](https://requires.io/github/bramfoo/todo-backend/requirements/?branch=master)
+
 # Python implementation of todobackend.com
 This is a (work in progress) Python implementation of the specifications of [todobackend.com](http://todobackend.com/), using [Flask](http://flask.pocoo.org/) as an web framework (with [Gunicorn](http://gunicorn.org/) as a [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) server)
 
