@@ -33,3 +33,6 @@ class ItemTestCase(unittest.TestCase):
     def test_item_toString(self):
         item = Item("Title", 1, True)
         self.assertEqual(str(item), "Item(title=Title, order=1, completed=True)")
+
+if __name__ == '__main__':
+    unittest.main()
