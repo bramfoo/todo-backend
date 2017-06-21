@@ -9,7 +9,7 @@ from todo.item import Item
 
 
 todos = {}
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/', methods=['GET', 'POST', 'DELETE'])
 def index():
